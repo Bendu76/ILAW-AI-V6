@@ -1,4 +1,5 @@
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const generateForm =
@@ -45,27 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 previewContainer.innerHTML =
                     "<p>Generating ILAW...</p>";
 
-                console.log("");
-                console.log("========== FRONTEND DEBUG ==========");
-                console.log("TOKEN:", token);
-                console.log("GRADE:", grade);
-                console.log("SUBJECT:", subject);
-                console.log("TOPIC:", topic);
-                console.log("COMPETENCY:", competency);
-                console.log("SESSIONS:", sessions);
-                console.log("====================================");
-                console.log("");
-
                 const response =
                     await fetch(
-                        "http://localhost:3000/generate",
+                        `${window.location.origin}/generate`,
                         {
                             method: "POST",
                             headers: {
-                                "Content-Type":
-                                    "application/json",
-                                "Authorization":
-                                    "Bearer " + token
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${token}`
                             },
                             body: JSON.stringify({
                                 grade,
@@ -80,44 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 const result =
                     await response.json();
 
-                console.log("");
-                console.log("========== API RESPONSE ==========");
-                console.log(result);
-                console.log("==================================");
-                console.log("");
-/*
                 if (!result.success) {
 
+                    if (
+                        result.message &&
+                        result.message.includes(
+                            "No remaining free generations"
+                        )
+                    ) {
+
+                        alert(
+                            "Free generation consumed. Redirecting to payment page..."
+                        );
+
+                        window.location.href =
+                            "/payment.html";
+
+                        return;
+
+                    }
+
                     throw new Error(
-                        result.message
+                        result.message || "Failed to generate ILAW."
                     );
 
                 }
-*/
-if (!result.success) {
-
-    if (
-        result.message.includes(
-            "No remaining free generations"
-        )
-    ) {
-
-        alert(
-            "Free generation consumed. Redirecting to payment page..."
-        );
-
-        window.location.href =
-            "/payment.html";
-
-        return;
-
-    }
-
-    throw new Error(
-        result.message
-    );
-
-}
 
                 previewContainer.innerHTML =
                     result.data.html;
@@ -126,7 +101,9 @@ if (!result.success) {
 
                 console.error(error);
 
-                alert(error.message);
+                alert(
+                    error.message || "Failed to connect to the server."
+                );
 
             }
 
@@ -134,6 +111,7 @@ if (!result.success) {
     );
 
 });
+
 /**
  * ==========================================
  * Print ILAW

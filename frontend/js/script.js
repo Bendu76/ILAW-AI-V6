@@ -5,11 +5,11 @@
  * Project : ILAW-AI-V6
  * File    : frontend/js/script.js
  * Purpose : Frontend Functions
- * Version : 2.0.0
+ * Version : 2.1.0 (Production Ready)
  * ==========================================
  */
 
-const API_URL = "http://localhost:3000";
+const API_URL = window.location.origin;
 
 /**
  * ==========================================
@@ -33,10 +33,6 @@ async function generateLessonPlan() {
 
     const sessions =
         document.getElementById("sessions").value;
-
-    /**
-     * Basic Validation
-     */
 
     if (
         !grade ||
@@ -87,6 +83,7 @@ async function generateLessonPlan() {
 
                         "Authorization":
                             `Bearer ${token}`
+
                     },
 
                     body: JSON.stringify({
@@ -117,19 +114,11 @@ async function generateLessonPlan() {
 
         }
 
-        /**
-         * Display Generated ILAW
-         */
-
         document.getElementById("output").innerHTML =
 
             data.data?.html ||
 
             "<p>No lesson plan generated.</p>";
-
-        /**
-         * Update Credits
-         */
 
         if (data.data) {
 
@@ -172,7 +161,6 @@ async function generateLessonPlan() {
 function logout() {
 
     localStorage.removeItem("token");
-
     localStorage.removeItem("credits");
 
     window.location.href =
@@ -189,17 +177,11 @@ function logout() {
 function loadCredits() {
 
     const credits =
-
-        localStorage.getItem("credits")
-
-        || 0;
+        localStorage.getItem("credits") || 0;
 
     document.getElementById(
-
         "creditsDisplay"
-
     ).textContent =
-
         `Credits: ${credits}`;
 
 }
@@ -214,7 +196,7 @@ window.onload = () => {
 
     loadCredits();
 
-const generateBtn =
+    const generateBtn =
         document.getElementById("generateBtn");
 
     if (generateBtn) {
@@ -227,4 +209,3 @@ const generateBtn =
     }
 
 };
-
