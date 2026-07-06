@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILAW AI Generator</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>ILAW AI Lesson Plan Generator</h1>
+
+        <div class="form">
+
+            <input
+                type="text"
+                id="grade"
+                placeholder="Grade Level">
+
+            <input
+                type="text"
+                id="subject"
+                placeholder="Subject">
+
+            <input
+                type="text"
+                id="topic"
+                placeholder="Topic">
+
+            <label>
+                <b>Learning Competency / MELC</b>
+            </label>
+
+            <textarea
+                id="competency"
+                rows="4"
+                placeholder="Example: Explain the phases of matter and describe changes caused by heating and cooling."
+                style="width:100%; margin-top:5px;">
+            </textarea>
+
+            <select id="sessions">
+                <option value="1">1 Session</option>
+                <option value="2">2 Sessions</option>
+                <option value="3">3 Sessions</option>
+                <option value="4">4 Sessions</option>
+                <option value="5">5 Sessions</option>
+            </select>
+
+            <h3 id="creditsDisplay">
+                Credits: 0
+            </h3>
+
+            <button id="generateBtn">
+                Generate ILAW
+            </button>
+
+        </div>
+
+        <div id="output"></div>
+
+        <div class="buttons">
+
+            <button onclick="downloadDOCX()">
+                Download DOCX
+            </button>
+
+            <button onclick="window.print()">
+                Print Lesson Plan
+            </button>
+
+            <button onclick="window.location.href='payment.html'">
+                Buy Credits
+            </button>
+
+            <button onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- DOCX LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.0.3/docx.min.js"></script>
+
+    <!-- FILE SAVER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- DOCX EXPORT -->
+    <script src="/js/docxExport.js"></script>
+
+    <!-- LANGUAGE DETECTOR -->
+    <script src="/js/languageDetector.js"></script>
+
+    <!-- MAIN SCRIPT -->
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

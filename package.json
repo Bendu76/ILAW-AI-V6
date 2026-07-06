@@ -1,0 +1,52 @@
+
+
+{
+  "name": "ilaw-ai-v6",
+  "version": "1.0.0",
+  "description": "Enterprise AI-powered MATATAG ILAW Lesson Plan Generator",
+
+  "private": true,
+
+  "main": "backend/server.js",
+
+  "type": "commonjs",
+
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
+
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+
+  "keywords": [
+    "education",
+    "lesson-plan",
+    "matatag",
+    "deped",
+    "express",
+    "openai"
+  ],
+
+  "author": "Luvismindo U. Duan Jr.",
+
+  "license": "UNLICENSED",
+
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.7.1",
+    "openai": "^6.44.0"
+  },
+
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

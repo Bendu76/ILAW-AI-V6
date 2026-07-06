@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ILAW-AI-V6 Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Overlay (Mobile) -->
+    <div id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>ILAW-AI</h2>
+
+            <span>Smart Library v6</span>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li class="active">
+
+                    <a href="#">🏠 Dashboard</a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">📚 Generate ILAW</a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">📁 My Lesson Plans</a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">🗂 Archive</a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">👤 Profile</a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">⚙ Settings</a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <button id="logoutBtn">
+
+            Logout
+
+        </button>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <header class="topbar">
+
+            <button id="menuBtn">
+
+                ☰
+
+            </button>
+
+            <div>
+
+                <h1>
+
+                    Welcome,
+
+                    <span id="teacherName">
+
+                        Teacher
+
+                    </span>
+
+                </h1>
+
+            </div>
+
+        </header>
+
+        <!-- Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>Credits</h3>
+
+                <p id="credits">
+
+                    --
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Free Generates</h3>
+
+                <p id="freeGenerations">
+
+                    --
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Saved ILAW</h3>
+
+                <p id="savedLessons">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Subscription</h3>
+
+                <p id="subscription">
+
+                    FREE
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Generator -->
+
+        <section class="generator">
+
+            <h2>
+
+                Generate New ILAW
+
+            </h2>
+
+            <form id="generateForm">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Grade Level
+
+                    </label>
+
+           <select id="grade">
+
+    <option value="">Select Grade Level</option>
+
+    <option value="Kindergarten">Kindergarten</option>
+
+    <option value="Grade 1">Grade 1</option>
+    <option value="Grade 2">Grade 2</option>
+    <option value="Grade 3">Grade 3</option>
+    <option value="Grade 4">Grade 4</option>
+    <option value="Grade 5">Grade 5</option>
+    <option value="Grade 6">Grade 6</option>
+
+    <option value="Grade 7">Grade 7</option>
+    <option value="Grade 8">Grade 8</option>
+    <option value="Grade 9">Grade 9</option>
+    <option value="Grade 10">Grade 10</option>
+
+    <option value="Grade 11">Grade 11</option>
+    <option value="Grade 12">Grade 12</option>
+
+</select>       
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Subject
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Topic
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="topic">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Learning Competency
+
+                    </label>
+
+                    <textarea
+                        id="competency"
+                        rows="4"></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Sessions
+
+                    </label>
+
+                    <select id="sessions">
+
+                        <option value="1">1 Session</option>
+                        <option value="2">2 Sessions</option>
+                        <option value="3">3 Sessions</option>
+                        <option value="4">4 Sessions</option>
+                        <option value="5">5 Sessions</option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="generateBtn">
+
+                    Generate ILAW
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- Preview -->
+
+        <section class="preview">
+
+            <div class="preview-header">
+
+                <h2>
+
+                    Preview
+
+                </h2>
+
+                <div>
+
+                    <button id="printBtn">
+
+                        Print
+
+                    </button>
+
+                    <button id="downloadBtn"
+                    onclick="downloadDOCX()">
+                        Download DOCX
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div id="previewContainer">
+
+                Your generated ILAW Lesson Plan will appear here.
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/docxExport.js"></script>
+    <script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>
