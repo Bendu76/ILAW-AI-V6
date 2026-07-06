@@ -9,7 +9,8 @@
  * ==========================================
  */
 
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
+const API_URL = "https://ilaw-ai-v6.onrender.com";
 
 /**
  * ==========================================
