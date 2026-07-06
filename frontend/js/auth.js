@@ -1,16 +1,16 @@
 
+
 /**
  * ==========================================
- * Project : ILAW-AI-V6
+ * Project : ILAW-AI-V6 Enterprise Edition
  * Module  : Frontend Authentication
  * File    : frontend/js/auth.js
  * Purpose : Register, Login and Logout
- * Version : 2.0.0
+ * Version : 2.1.0 (Production Ready)
  * ==========================================
  */
 
-//const API_URL = "http://localhost:3000";
-const API_URL = "https://ilaw-ai-v6.onrender.com";
+const API_URL = window.location.origin;
 
 /**
  * ==========================================
@@ -36,7 +36,6 @@ async function register(event) {
     if (!fullname || !position || !email || !password) {
 
         alert("Please complete all fields.");
-
         return;
 
     }
@@ -44,33 +43,22 @@ async function register(event) {
     try {
 
         const response = await fetch(
-
             `${API_URL}/auth/register`,
-
             {
-
                 method: "POST",
 
                 headers: {
-
                     "Content-Type": "application/json"
-
                 },
 
                 body: JSON.stringify({
-
                     fullname,
-
                     position,
-
                     email,
-
                     password
-
                 })
 
             }
-
         );
 
         const result = await response.json();
@@ -78,9 +66,7 @@ async function register(event) {
         if (!response.ok) {
 
             throw new Error(
-
                 result.message || "Registration failed."
-
             );
 
         }
@@ -91,7 +77,11 @@ async function register(event) {
 
     } catch (error) {
 
-        alert(error.message);
+        console.error(error);
+
+        alert(
+            error.message || "Unable to register."
+        );
 
     }
 
@@ -115,7 +105,6 @@ async function login(event) {
     if (!email || !password) {
 
         alert("Please complete all fields.");
-
         return;
 
     }
@@ -123,29 +112,20 @@ async function login(event) {
     try {
 
         const response = await fetch(
-
             `${API_URL}/auth/login`,
-
             {
-
                 method: "POST",
 
                 headers: {
-
                     "Content-Type": "application/json"
-
                 },
 
                 body: JSON.stringify({
-
                     email,
-
                     password
-
                 })
 
             }
-
         );
 
         const result = await response.json();
@@ -153,36 +133,33 @@ async function login(event) {
         if (!response.ok) {
 
             throw new Error(
-
                 result.message || "Login failed."
-
             );
 
         }
 
         localStorage.setItem(
-
             "token",
-
             result.data.token
-
         );
 
         localStorage.setItem(
-
             "user",
-
             JSON.stringify(result.data.user)
-
         );
 
         alert("Login successful!");
 
-        window.location.href = "dashboard.html";
+        window.location.href =
+            "dashboard.html";
 
     } catch (error) {
 
-        alert(error.message);
+        console.error(error);
+
+        alert(
+            error.message || "Unable to login."
+        );
 
     }
 
@@ -196,10 +173,10 @@ async function login(event) {
 function logout() {
 
     localStorage.removeItem("token");
-
     localStorage.removeItem("user");
 
-    window.location.href = "login.html";
+    window.location.href =
+        "login.html";
 
 }
 
@@ -227,7 +204,7 @@ function isLoggedIn() {
 
 /**
  * ==========================================
- * Initialize Events
+ * Initialize
  * ==========================================
  */
 
@@ -239,11 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (registerForm) {
 
         registerForm.addEventListener(
-
             "submit",
-
             register
-
         );
 
     }
@@ -254,11 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginForm) {
 
         loginForm.addEventListener(
-
             "submit",
-
             login
-
         );
 
     }
